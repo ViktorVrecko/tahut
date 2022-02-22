@@ -1,4 +1,4 @@
-DROP TABLE if exists users, sticker, authorities, groups, groups_users;
+DROP TABLE if exists users, stickers, authorities, groups, groups_users;
 
 CREATE TABLE users (
   id bigserial PRIMARY KEY,
