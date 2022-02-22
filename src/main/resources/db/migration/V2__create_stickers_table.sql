@@ -1,5 +1,5 @@
 
-CREATE TABLE sticker (
+CREATE TABLE stickers (
   id BIGSERIAL PRIMARY KEY,
   content VARCHAR(250) NOT NULL,
   author VARCHAR(50) NOT NULL,
