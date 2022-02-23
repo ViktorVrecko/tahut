@@ -1,9 +1,11 @@
 package tech.makers.tahut.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,26 @@ public class StickerServiceTest {
 
     assertEquals(newSticker.getFkAuthor(), "admin");
     assertEquals(newSticker.getContent(), "Meeting with Freddy");
+  }
+
+  @Test
+  public void returnsListOfMyStickersOrderedByDate() {
+
+    LocalDate date = LocalDate.of(2022, 02, 25);
+    LocalTime time = LocalTime.of(18, 07);
+    
+    Sticker closeByEvent = stickerService.createNewSticker("admin", "Meet for a Beer", date.plusDays(1), time, 1);
+    Sticker farAwayEvent = stickerService.createNewSticker("admin", "Begin of vacation", date.plusMonths(3), time, 1);
+    Sticker inTheMiddleEvent = stickerService.createNewSticker("admin", "Meet for a Beer", date.plusMonths(1), time, 1);
+
+    List<Sticker> myEvents = stickerService.getStickersByAuthorOrderByDate("admin");    
+
+    int indexCloseByEvent = myEvents.indexOf(closeByEvent);
+    int indexFarAwayEvent = myEvents.indexOf(farAwayEvent);
+    int indexInTheMiddleEvent = myEvents.indexOf(inTheMiddleEvent);
+
+    assertTrue(indexCloseByEvent < indexInTheMiddleEvent);
+    assertTrue(indexInTheMiddleEvent < indexFarAwayEvent);    
   }
 
 }

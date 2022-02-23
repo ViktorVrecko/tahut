@@ -3,6 +3,7 @@ package tech.makers.tahut.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class StickerService {
         newSticker.setEventDate(LocalDateTime.of(eventDate, eventStartTime));
 
         return stickersRepository.save(newSticker);               
+  }
+
+  public List<Sticker> getStickersByAuthorOrderByDate(String author) {
+    return stickersRepository.findByFkAuthorOrderByEventDate(author);
   }
  
 }

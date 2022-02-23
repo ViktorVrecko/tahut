@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -19,9 +20,10 @@ public class StickersController {
   @Autowired
   StickerService stickerService;
 
-  @GetMapping("/stickers/new")
-  public String dummyPage() {   
-    return "/stickers/new";
+  @GetMapping("/stickers")
+  public String dummyPage(Authentication auth, Model model) {   
+    model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName()));    
+    return "/stickers/index";
   }
 
   @PostMapping("/stickers")
@@ -33,7 +35,7 @@ public class StickersController {
         int eventDuration
     ) {
     stickerService.createNewSticker(auth.getName(), eventTitle, eventDate, eventStartTime, eventDuration);       
-    return new RedirectView("stickers/new");            
+    return new RedirectView("/stickers");            
   }
   
 }
