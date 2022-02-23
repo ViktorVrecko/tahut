@@ -23,6 +23,35 @@ public class Sticker {
   @Column(name="event_date", columnDefinition = "TIMESTAMP")
   private LocalDateTime eventDate;
   
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Sticker other = (Sticker) obj;
+    if (content == null) {
+      if (other.content != null)
+        return false;
+    } else if (!content.equals(other.content))
+      return false;
+    if (duration != other.duration)
+      return false;
+    if (eventDate == null) {
+      if (other.eventDate != null)
+        return false;
+    } else if (!eventDate.equals(other.eventDate))
+      return false;
+    if (fkAuthor == null) {
+      if (other.fkAuthor != null)
+        return false;
+    } else if (!fkAuthor.equals(other.fkAuthor))
+      return false;
+    return true;
+  }
+  
   public Long getId() {
     return id;
   }
