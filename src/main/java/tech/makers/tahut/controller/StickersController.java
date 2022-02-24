@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +31,28 @@ public class StickersController {
     return "/stickers/index";
   }
 
+  @GetMapping("edit/{id}") 
+  public String showUpdateForm(Authentication auth, Model model, @PathVariable("id") Long id) {
+    model.addAttribute("stickerToEdit", stickerService.getStickerByAuthorAndId(auth.getName(), id));
+    return "/stickers/edit";
+  }
+
   @DeleteMapping("{id}")
   public RedirectView deleteSticker(Authentication auth, @PathVariable("id") Long id) {
     stickerService.deleteSticker(auth.getName(), id);
+    return new RedirectView("/stickers"); 
+  }
+
+  @PatchMapping("{id}")
+  public RedirectView updateSticker(
+      Authentication auth,
+      @PathVariable("id") Long id,
+      String eventTitle,
+      @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate eventDate,
+      @DateTimeFormat(pattern = "HH:mm") LocalTime eventStartTime,
+      int eventDuration
+    ) {
+    stickerService.updateSticker(auth.getName(), id, eventTitle, eventDate, eventStartTime, eventDuration);
     return new RedirectView("/stickers"); 
   }
 
