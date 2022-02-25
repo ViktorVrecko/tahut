@@ -68,7 +68,23 @@ public class StickerServiceTest {
         
     assertFalse(myEvents.contains(deleteSticker));
     assertTrue(myEvents.contains(notDeleteSticker));
+  }
+
+  @Test
+  public void updateSticker() {
+
+    LocalDate date = LocalDate.of(2022, 02, 25);
+    LocalTime time = LocalTime.of(18, 07);
+
+    Sticker newSticker = stickerService.createNewSticker("admin", "Meeting with Freddy", date, time, 2);   
+    
+    Sticker updatedSticker = stickerService.updateSticker("admin", newSticker.getId(), "Meeting with Alex", date, time, 4);
+    
+    assertEquals(updatedSticker.getContent(), "Meeting with Alex");
+    assertEquals(updatedSticker.getDuration(), 4);
+    assertEquals(newSticker.getId(), updatedSticker.getId());
     
   }
+
 
 }

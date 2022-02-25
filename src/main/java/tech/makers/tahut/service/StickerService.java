@@ -29,6 +29,21 @@ public class StickerService {
         return stickersRepository.save(newSticker);               
   }
 
+  public Sticker updateSticker(String authorName, Long id, String eventTitle, LocalDate eventDate, LocalTime eventStartTime,
+  int eventDuration ) {
+    Sticker toUpdate = stickersRepository.findById(id).get();
+
+    if ( !toUpdate.getFkAuthor().equals(authorName) ) {
+      return null;
+    }
+
+    toUpdate.setContent(eventTitle);
+    toUpdate.setEventDate(LocalDateTime.of(eventDate, eventStartTime));
+    toUpdate.setDuration(eventDuration);
+
+    return stickersRepository.save(toUpdate);
+  }
+
   public void deleteSticker(String authorName, Long id) {
     Sticker toDelete = stickersRepository.findById(id).get();
 
@@ -37,6 +52,16 @@ public class StickerService {
     }
 
     stickersRepository.deleteById(id);        
+  }
+
+  public Sticker getStickerByAuthorAndId(String authorName, Long id) {
+    Sticker returnSticker = stickersRepository.findById(id).get();
+
+    if (!returnSticker.getFkAuthor().equals(authorName)) {
+      return null;
+    }
+
+    return returnSticker;
   }
 
   public List<Sticker> getStickersByAuthorOrderByDate(String author) {
