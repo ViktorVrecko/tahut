@@ -1,0 +1,541 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="../static/main.css">
+
+  <title>Tahut</title>
+</head>
+<style>
+  body {
+    background-color: #587a9db5
+  }
+
+  .flex-container {
+    display: flex;
+    --background-color: rgb(208, 227, 246);
+  }
+
+  .flex-container>div {
+    background-color: #fbfbfb;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+  }
+
+  .navbar-brand.brand {
+    color: #febe00
+  }
+</style>
+
+<body>
+
+  <!-- navbar  -->
+  <div class="navbar" style="background-color: #465d84; color: #f0f0f0 ;  ">
+
+    <div class="container-fluid overflow-hidden">
+      <div class="col-3 text-start">
+        <a class="navbar-brand brand" href="/"> Tahut </a>
+
+        some text / code left aligned
+      </div>
+      <div class="col-6 text-center">
+        some text / code - centered
+      </div>
+      <div class="col-3 text-end">
+
+        <span class="navbar-text">
+          <div sec:authorize="isAuthenticated()">
+            Signed in as: <span sec:authentication="name"></span>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- end navbar  -->
+
+  <!-- New Sticker Form -->
+  <div class="container col-2 card card-body">
+    <form action="#" th:action="@{/stickers}" method="POST">
+      <div class="mt-3">
+        <label class="form-label" for="eventTitle">Title:</label>
+        <input class="form-control" type="text" id="eventTitle" name="eventTitle" required>
+      </div>
+      <div class="mt-3">
+        <label class="form-label" for="eventDate">Date:</label>
+        <input class="form-control" type="date" id="eventDate" name="eventDate" min="2022-01-01" max="2022-12-31"
+          required>
+      </div>
+      <div class="mt-3">
+        <label class="form-label" for="eventStartTime">Start Time:</label>
+        <input class="form-control" type="time" id="eventStartTime" name="eventStartTime" required>
+      </div>
+      <div class="mt-3">
+        <label class="form-label" for="eventDuration">Duration:</label>
+        <select class="form-select" name="eventDuration" id="eventDuration" required>
+          <option value="" disabled selected hidden>Please choose...</option>
+          <option value="1">1h</option>
+          <option value="2">2h</option>
+          <option value="3">3h</option>
+          <option value="4">4h</option>
+          <option value="6">6h</option>
+          <option value="8">8h</option>
+          <option value="12">12h</option>
+          <option value="16">16h</option>
+        </select>
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- carousel placing  -->
+  <div class="container-fluid ">
+    <!-- <div class="row "> -->
+    <div class="row justify-content-center">
+      <div class="col-10 col_carousel text-center rounded border  ">
+
+        <!-- carousel start  -->
+        <!--<div class="bd-example">-->
+        <div id="months" class="carousel slide" data-bs-interval="false">
+
+          <div class="carousel-indicators">
+            <button type="submit" data-bs-target="#months" data-bs-slide-to="0"
+              th:class="${monthValueNow == 1 } ? 'active' : ''" aria-label="January"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="1"
+              th:class="${monthValueNow == 2 } ? 'active' : ''" aria-label="February"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="2"
+              th:class="${monthValueNow == 3 } ? 'active' : ''" aria-label="March"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="3"
+              th:class="${monthValueNow == 4 } ? 'active' : ''" aria-label="April"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="4"
+              th:class="${monthValueNow == 5 } ? 'active' : ''" aria-label="Mai"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="5"
+              th:class="${monthValueNow == 6 } ? 'active' : ''" aria-label="June"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="6"
+              th:class="${monthValueNow == 7 } ? 'active' : ''" aria-label="July"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="7"
+              th:class="${monthValueNow == 8 } ? 'active' : ''" aria-label="August"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="8"
+              th:class="${monthValueNow == 9 } ? 'active' : ''" aria-label="September"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="9"
+              th:class="${monthValueNow == 10 } ? 'active' : ''" aria-label="October"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="10"
+              th:class="${monthValueNow == 11 } ? 'active' : ''" aria-label="November"></button>
+            <button type="button" data-bs-target="#months" data-bs-slide-to="11"
+              th:class="${monthValueNow == 12 } ? 'active' : ''" aria-label="December"></button>
+          </div>
+
+          <div class="carousel-inner">
+
+            <!-- January  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 1 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    January
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 1}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- February  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 2 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    February
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 2}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- March  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 3 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    March
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 3}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- April  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 4 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    April
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 4}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- May  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 5 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    May
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 5}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- June  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 6 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    June
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 6}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- July  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 7 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    July
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 7}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- August  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 8 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    August
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 8}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- September  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 9 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    September
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 9}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- October  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 10 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    October
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 10}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- November  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 11 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    November
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 11}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- December  -->
+            <div class="carousel-item" th:classappend="${monthValueNow == 12 } ? 'active' : '' ">
+              <div class="container col-8">
+                <div class="card mt-2 mb-2">
+                  <div class="card-header">
+                    December
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 12}">
+                          <td th:text="${sticker.getEventDate.toLocalDate}"></td>
+                          <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getEventDate.toLocalTime}"></td>
+                          <td th:text="${sticker.getDuration}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#months" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#months" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+
+
+          <!-- carousel end  -->
+
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+
+  </div>
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
