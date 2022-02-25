@@ -27,7 +27,9 @@ public class StickersController {
 
   @GetMapping
   public String showMyStickers(Authentication auth, Model model) {   
-    model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName()));    
+  model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName())); 
+  model.addAttribute("monthValueNow", LocalDate.now().getMonthValue());   
+  model.addAttribute("dateToday", LocalDate.now());
     return "/stickers/index";
   }
 
