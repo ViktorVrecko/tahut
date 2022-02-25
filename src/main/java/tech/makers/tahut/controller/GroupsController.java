@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import tech.makers.tahut.model.Groups;
 import tech.makers.tahut.repository.GroupsRepository;
 import tech.makers.tahut.service.GroupService;
 
@@ -21,12 +20,9 @@ public class GroupsController {
   @Autowired
   GroupService groupService;
 
-  // @Autowired
-  // GroupsUsersRepository groupsUsersRepository;
-
   @GetMapping("/groups")
-  public String groups(Model model) {
-    model.addAttribute("groups", groupService.getAllGroups());
+  public String groups(Authentication auth, Model model) {   
+    model.addAttribute("groups", groupService.getGroupsByGroupowner(auth.getName()));    
     return "/groups/groups";
   }
 

@@ -27,7 +27,9 @@ public class GroupService {
   
     return groupsRepository.save(newGroup);
   }
-  public List<Groups> getAllGroups() {
-    return groupsRepository.findAllByOrderById();
+
+  public List<Groups> getGroupsByGroupowner(String groupownername) {
+    User searchuser = userRepository.findByUsername(groupownername).get(0);
+    return groupsRepository.findGroupsByGroupowner(searchuser.getId());
   }
 }
