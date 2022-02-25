@@ -1,0 +1,75 @@
+.navbar-brand.brand {
+  color:rgb(232, 239, 110)
+}
+
+.container-fluid.cf1{
+  color:rgb(239, 140, 110)
+}
+
+[class*="v1"] {
+  padding: 1rem;
+  background-color: #465d84;
+  border: 0px solid #13361f;
+  color: #c21c1c;
+  text-align: center;
+}
+
+[class*="col_carousel"] {
+  --padding: 3rem;
+  background-color: #7a7f95;
+  --background-color: #ffffff;
+  --border: 2px solid #ca0d0d;
+  --color: #c21c1c;
+  text-align: center;
+  }
+  [class*="row1"] {
+  padding: 0rem;
+  --background-color: #587a9db5;
+  border: 2px solid #e113c2;
+  --color: #c21c1c;
+  --text-align: center;
+  }
+
+  [class*="space1"] {
+    padding: 5rem;
+    --background-color: #587a9db5;
+    --border: 2px solid #040404;
+    --color: #c21c1c;
+    --text-align: center;
+    --margin-bottom: 00px;
+    }
+    [class*="space2"] {
+      padding: 2rem;
+      --background-color: #587a9db5;
+      --border: 2px solid #040404;
+      --color: #c21c1c;
+      --text-align: center;
+      --margin-bottom: 00px;
+      }
+  
+    [class*="con1"] {
+    padding: 0rem;
+    --background-color: #587a9db5;
+    border: 2px solid #040404;
+    --color: #c21c1c;
+    --text-align: center;
+    
+    }
+    [class*="con2"] {
+      padding: 0rem;
+      --background-color: #ffffff;
+      --border: 2px solid #040404;
+      --color: #c21c1c;
+      --text-align: center;
+      
+      }
+  
+    [class*="car1"] { 
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  z-index: 20;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    }
+
