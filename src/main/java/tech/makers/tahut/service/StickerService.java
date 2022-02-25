@@ -29,6 +29,16 @@ public class StickerService {
         return stickersRepository.save(newSticker);               
   }
 
+  public void deleteSticker(String authorName, Long id) {
+    Sticker toDelete = stickersRepository.findById(id).get();
+
+    if ( !toDelete.getFkAuthor().equals(authorName) ) {
+      return;
+    }
+
+    stickersRepository.deleteById(id);        
+  }
+
   public List<Sticker> getStickersByAuthorOrderByDate(String author) {
     return stickersRepository.findByFkAuthorOrderByEventDate(author);
   }

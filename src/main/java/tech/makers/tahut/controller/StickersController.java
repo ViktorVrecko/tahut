@@ -8,25 +8,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import tech.makers.tahut.service.StickerService;
 
 @Controller
+@RequestMapping("/stickers")
 public class StickersController {
 
   @Autowired
   StickerService stickerService;
 
-  @GetMapping("/stickers")
-  public String dummyPage(Authentication auth, Model model) {   
+  @GetMapping
+  public String showMyStickers(Authentication auth, Model model) {   
     model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName()));    
     return "/stickers/index";
   }
 
-  @PostMapping("/stickers")
+  @DeleteMapping("{id}")
+  public RedirectView deleteSticker(Authentication auth, @PathVariable("id") Long id) {
+    stickerService.deleteSticker(auth.getName(), id);
+    return new RedirectView("/stickers"); 
+  }
+
+  @PostMapping
   public RedirectView createNewSticker(
         Authentication auth, 
         String eventTitle,

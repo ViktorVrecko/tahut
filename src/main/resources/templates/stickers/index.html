@@ -13,6 +13,8 @@
     </head>
     <body>
 
+        <div class="container">
+
         <!-- New Sticker Form -->
         <form action="#" th:action="@{/stickers}" method="POST">
             <ul>
@@ -48,8 +50,17 @@
         </form>
 
         <!-- View Sticker Cards -->
-        <div class="card" th:each="sticker : ${myStickers}">
+        <div class="card mt-3" th:each="sticker : ${myStickers}">
             <div class="card-body">
+
+                <form action="#" th:action="@{'/stickers/' + ${sticker.id}}" th:method="delete">
+                    <button type="submit" class="btn btn-danger badge translate-middle position-absolute top-0 start-100">
+                        X
+                    </button>
+                </form>
+
+              
+                <!-- Sticker Data -->
                 <span th:text="${sticker.content}" /> <br>
                 <span th:text="${sticker.fkAuthor}" /> <br>
                 <span th:text="${sticker.eventDate}" /> <br>

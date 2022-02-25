@@ -1,6 +1,7 @@
 package tech.makers.tahut.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
@@ -51,6 +52,23 @@ public class StickerServiceTest {
 
     assertTrue(indexCloseByEvent < indexInTheMiddleEvent);
     assertTrue(indexInTheMiddleEvent < indexFarAwayEvent);    
+  }
+
+  @Test
+  public void deleteStickers() {
+    LocalDate date = LocalDate.of(2022, 02, 25);
+    LocalTime time = LocalTime.of(18, 07);
+
+    Sticker deleteSticker = stickerService.createNewSticker("admin", "I will be deleted", date, time, 1);
+    Sticker notDeleteSticker = stickerService.createNewSticker("admin", "I will not be deleted", date, time, 1);
+
+    stickerService.deleteSticker("admin", deleteSticker.getId());
+    stickerService.deleteSticker("i am not the author of this sticker", notDeleteSticker.getId());
+    List<Sticker> myEvents = stickerService.getStickersByAuthorOrderByDate("admin");
+        
+    assertFalse(myEvents.contains(deleteSticker));
+    assertTrue(myEvents.contains(notDeleteSticker));
+    
   }
 
 }
