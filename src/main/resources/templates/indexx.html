@@ -1,4 +1,5 @@
 <!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -60,36 +61,36 @@
     
     <!-- space  -->
     <div class="container-fluid space1 "></div>
-    
+
+
         
     
     <!-- carousel placing  -->
-    <div class="container ">
+    <div class="container-fluid ">
       <!-- <div class="row "> -->
         <div class="row justify-content-center">
-          <div class="col-6 col_carousel text-center rounded border  ">
+          <div class="col-10 col_carousel text-center rounded border  ">
             
             <!-- carousel start  -->
             <!--<div class="bd-example">-->
             <div id="months" class="carousel slide" data-bs-interval="false">
               <div class="carousel-indicators">
-
-                <button type="button" data-bs-target="#months" data-bs-slide-to="0" class="active" aria-current="true" aria-label="January"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="1" aria-label="February"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="2" aria-label="March"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="3" aria-label="April"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="4" aria-label="Mai"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="5" aria-label="June"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="6" aria-label="July"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="7" aria-label="August"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="8" aria-label="September"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="9" aria-label="October"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="10" aria-label="November"></button>
-                <button type="button" data-bs-target="#months" data-bs-slide-to="11" aria-label="December"></button>
+                <button type="submit" data-bs-target="#months" data-bs-slide-to="0" th:class="${monthValueNow == 0 } ? 'active' : ''" aria-label="January"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="1" th:class="${monthValueNow == 1 } ? 'active' : ''" aria-label="February"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="2" th:class="${monthValueNow == 2 } ? 'active' : ''" aria-label="March"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="3" th:class="${monthValueNow == 3 } ? 'active' : ''" aria-label="April"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="4" th:class="${monthValueNow == 4 } ? 'active' : ''" aria-label="Mai"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="5" th:class="${monthValueNow == 5 } ? 'active' : ''" aria-label="June"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="6" th:class="${monthValueNow == 6 } ? 'active' : ''" aria-label="July"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="7" th:class="${monthValueNow == 7 } ? 'active' : ''" aria-label="August"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="8" th:class="${monthValueNow == 8 } ? 'active' : ''" aria-label="September"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="9" th:class="${monthValueNow == 9 } ? 'active' : ''" aria-label="October"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="10" th:class="${monthValueNow == 10 } ? 'active' : ''" aria-label="November"></button>
+                <button type="button" data-bs-target="#months" data-bs-slide-to="11" th:class="${monthValueNow == 11 } ? 'active' : ''" aria-label="December"></button>
               </div>
 
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <div class="carousel-inner" >
+                <div class="carousel-item" th:classappend="${monthValueNow == 0 } ? 'active' : '' ">
                   <table class="table">
                     <thead>
                       <tr>
@@ -120,41 +121,40 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="carousel-item">
-                 
-                    
+                <div class="carousel-item" th:classappend="${monthValueNow == 1 } ? 'active' : '' ">
+                                                          
                   <img src="pictures/February.png" width="500" height="150" >
                  
                 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 2 } ? 'active' : '' ">
                    <text x="100%" y="100%" fill="#555" dy=".3em">March</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 3 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">April</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 4} ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">May</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 5 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">June</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 6 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">July</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 7 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">August</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 8 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">September</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 9 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">October</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 10 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">Novemner</text> 
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" th:classappend="${monthValueNow == 11 } ? 'active' : '' ">
                   <svg class=""></svg> <text x="100%" y="100%" fill="#555" dy=".3em">December</text> 
                 </div>
 
@@ -190,7 +190,7 @@
 
     <div class="flex-container ">
       <div class="col-12"  >
-      <div>1</div>
+      <span th:text="${monthnew}"></span>
       <div>2</div>
       <div>3</div>
       <div>4</div>
