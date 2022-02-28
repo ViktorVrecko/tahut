@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import tech.makers.tahut.repository.UserRepository;
 import tech.makers.tahut.service.StickerService;
 
 @Controller
@@ -25,7 +26,7 @@ public class StickersController {
 
   @Autowired
   StickerService stickerService;
-
+    
   @GetMapping
   public String showMyStickers(Authentication auth, Model model, @RequestParam(required=false) Integer month) {   
     if (month == null) {

@@ -15,9 +15,6 @@ import tech.makers.tahut.service.GroupService;
 public class GroupsController {
 
   @Autowired
-  GroupsRepository groupsRepository;
-
-  @Autowired
   GroupService groupService;
 
   @GetMapping("/groups")

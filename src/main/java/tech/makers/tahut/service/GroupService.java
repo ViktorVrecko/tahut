@@ -24,7 +24,8 @@ public class GroupService {
     Groups newGroup = new Groups();
     newGroup.setGroupname(groupname);
     newGroup.setGroupowner(searchuser.getId());
-  
+    newGroup.addUserToGroup(searchuser);    
+
     return groupsRepository.save(newGroup);
   }
 
