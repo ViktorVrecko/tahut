@@ -19,6 +19,9 @@ public class Sticker {
   private Long id;
   private String content;
   private String fkAuthor;
+  private Long fkGroupId;
+  
+
   private int duration;
   @Column(name="event_date", columnDefinition = "TIMESTAMP")
   private LocalDateTime eventDate;
@@ -82,4 +85,11 @@ public class Sticker {
   public void setEventDate(LocalDateTime eventDate) {
     this.eventDate = eventDate;
   }
+  public Long getFkGroupId() {
+    return fkGroupId;
+  }
+  public void setFkGroupId(Long fkGroupId) {
+    this.fkGroupId = fkGroupId;
+  }
+
 }

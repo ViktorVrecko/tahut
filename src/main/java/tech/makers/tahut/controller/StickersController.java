@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import tech.makers.tahut.service.GroupService;
 import tech.makers.tahut.service.StickerService;
 
 @Controller
@@ -26,6 +27,9 @@ public class StickersController {
   @Autowired
   StickerService stickerService;
 
+  @Autowired
+  GroupService groupService;
+    
   @GetMapping
   public String showMyStickers(Authentication auth, Model model, @RequestParam(required=false) Integer month) {   
     if (month == null) {
@@ -34,6 +38,7 @@ public class StickersController {
     model.addAttribute("currentMonthValue", month); 
     model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName()));  
     model.addAttribute("dateToday", LocalDate.now());
+    model.addAttribute("myGroupMemberships", groupService.getMembershipsByUsername(auth.getName()) );
     return "/stickers/index";
   }
 
@@ -68,9 +73,10 @@ public class StickersController {
         String eventTitle,
         @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate eventDate,
         @DateTimeFormat(pattern = "HH:mm") LocalTime eventStartTime,
-        int eventDuration
+        int eventDuration,
+        Long eventGroup
     ) {
-    stickerService.createNewSticker(auth.getName(), eventTitle, eventDate, eventStartTime, eventDuration);       
+    stickerService.createNewSticker(auth.getName(), eventTitle, eventDate, eventStartTime, eventDuration, eventGroup);       
     return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue() );            
   }
   

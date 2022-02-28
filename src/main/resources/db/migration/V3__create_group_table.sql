@@ -6,6 +6,6 @@ CREATE TABLE groups (
 );
 
 CREATE TABLE groups_users (
-  groupid BIGINT REFERENCES groups (id),
-  userid BIGINT REFERENCES users (id)
+  groups_id BIGINT REFERENCES groups (id),
+  users_id BIGINT REFERENCES users (id)
 );

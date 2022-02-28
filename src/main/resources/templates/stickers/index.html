@@ -93,6 +93,17 @@
           <option value="16">16h</option>
         </select>
       </div>
+
+      <div class="mt-3">
+        <label class="form-label" for="eventGroup">Group:</label>
+        <select class="form-select" name="eventGroup" id="eventGroup">
+          <option value="" selected>Choose group (optional)...</option>
+          <span th:each="group : ${myGroupMemberships}">
+            <option th:value="${group.getId}" th:text="${group.getGroupname}" ></option>
+          </span>
+        </select>
+      </div>
+
       <div class="mt-3">
         <button class="btn btn-primary" type="submit">Submit</button>
       </div>

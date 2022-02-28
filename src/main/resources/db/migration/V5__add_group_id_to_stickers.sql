@@ -1,0 +1,1 @@
+ALTER TABLE stickers ADD COLUMN fk_group_id BIGINT REFERENCES groups(id);

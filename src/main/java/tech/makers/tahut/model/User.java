@@ -4,8 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import static java.lang.Boolean.TRUE;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
@@ -16,6 +20,9 @@ public class User {
     private String username;
     private String password;
     private boolean enabled;
+
+    @ManyToMany(mappedBy = "members")
+    Set<Groups> groupMemberships = new HashSet<>();
  
     public User() {
         this.enabled = TRUE;
@@ -31,6 +38,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
+    }
+
+    public Set<Groups> getGroupMemberships() {
+        return groupMemberships;
     }
 
     public String getUsername() { return this.username; }

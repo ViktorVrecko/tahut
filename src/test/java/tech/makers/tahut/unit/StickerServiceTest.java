@@ -28,7 +28,7 @@ public class StickerServiceTest {
     LocalDate date = LocalDate.now();
     LocalTime time = LocalTime.now();
 
-    Sticker newSticker = stickerService.createNewSticker("admin", "Meeting with Freddy", date, time, 2);    
+    Sticker newSticker = stickerService.createNewSticker("admin", "Meeting with Freddy", date, time, 2, null);    
 
     assertEquals(newSticker.getFkAuthor(), "admin");
     assertEquals(newSticker.getContent(), "Meeting with Freddy");
@@ -40,9 +40,9 @@ public class StickerServiceTest {
     LocalDate date = LocalDate.of(2022, 02, 25);
     LocalTime time = LocalTime.of(18, 07);
     
-    Sticker closeByEvent = stickerService.createNewSticker("admin", "Meet for a Beer", date.plusDays(1), time, 1);
-    Sticker farAwayEvent = stickerService.createNewSticker("admin", "Begin of vacation", date.plusMonths(3), time, 1);
-    Sticker inTheMiddleEvent = stickerService.createNewSticker("admin", "Meet for a Beer", date.plusMonths(1), time, 1);
+    Sticker closeByEvent = stickerService.createNewSticker("admin", "Meet for a Beer", date.plusDays(1), time, 1, null);
+    Sticker farAwayEvent = stickerService.createNewSticker("admin", "Begin of vacation", date.plusMonths(3), time, 1, null);
+    Sticker inTheMiddleEvent = stickerService.createNewSticker("admin", "Meet for a Beer", date.plusMonths(1), time, 1, null);
 
     List<Sticker> myEvents = stickerService.getStickersByAuthorOrderByDate("admin");    
 
@@ -59,8 +59,8 @@ public class StickerServiceTest {
     LocalDate date = LocalDate.of(2022, 02, 25);
     LocalTime time = LocalTime.of(18, 07);
 
-    Sticker deleteSticker = stickerService.createNewSticker("admin", "I will be deleted", date, time, 1);
-    Sticker notDeleteSticker = stickerService.createNewSticker("admin", "I will not be deleted", date, time, 1);
+    Sticker deleteSticker = stickerService.createNewSticker("admin", "I will be deleted", date, time, 1, null);
+    Sticker notDeleteSticker = stickerService.createNewSticker("admin", "I will not be deleted", date, time, 1, null);
 
     stickerService.deleteSticker("admin", deleteSticker.getId());
     stickerService.deleteSticker("i am not the author of this sticker", notDeleteSticker.getId());
@@ -76,7 +76,7 @@ public class StickerServiceTest {
     LocalDate date = LocalDate.of(2022, 02, 25);
     LocalTime time = LocalTime.of(18, 07);
 
-    Sticker newSticker = stickerService.createNewSticker("admin", "Meeting with Freddy", date, time, 2);   
+    Sticker newSticker = stickerService.createNewSticker("admin", "Meeting with Freddy", date, time, 2, null);   
     
     Sticker updatedSticker = stickerService.updateSticker("admin", newSticker.getId(), "Meeting with Alex", date, time, 4);
     

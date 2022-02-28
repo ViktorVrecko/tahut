@@ -8,14 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import tech.makers.tahut.repository.GroupsRepository;
 import tech.makers.tahut.service.GroupService;
 
 @Controller
 public class GroupsController {
-
-  @Autowired
-  GroupsRepository groupsRepository;
 
   @Autowired
   GroupService groupService;
