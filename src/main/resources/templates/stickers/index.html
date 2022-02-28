@@ -111,35 +111,35 @@
 
           <div class="carousel-indicators">
             <button type="submit" data-bs-target="#months" data-bs-slide-to="0"
-              th:class="${monthValueNow == 1 } ? 'active' : ''" aria-label="January"></button>
+              th:class="${currentMonthValue == 1 } ? 'active' : ''" aria-label="January"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="1"
-              th:class="${monthValueNow == 2 } ? 'active' : ''" aria-label="February"></button>
+              th:class="${currentMonthValue == 2 } ? 'active' : ''" aria-label="February"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="2"
-              th:class="${monthValueNow == 3 } ? 'active' : ''" aria-label="March"></button>
+              th:class="${currentMonthValue == 3 } ? 'active' : ''" aria-label="March"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="3"
-              th:class="${monthValueNow == 4 } ? 'active' : ''" aria-label="April"></button>
+              th:class="${currentMonthValue == 4 } ? 'active' : ''" aria-label="April"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="4"
-              th:class="${monthValueNow == 5 } ? 'active' : ''" aria-label="Mai"></button>
+              th:class="${currentMonthValue == 5 } ? 'active' : ''" aria-label="Mai"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="5"
-              th:class="${monthValueNow == 6 } ? 'active' : ''" aria-label="June"></button>
+              th:class="${currentMonthValue == 6 } ? 'active' : ''" aria-label="June"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="6"
-              th:class="${monthValueNow == 7 } ? 'active' : ''" aria-label="July"></button>
+              th:class="${currentMonthValue == 7 } ? 'active' : ''" aria-label="July"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="7"
-              th:class="${monthValueNow == 8 } ? 'active' : ''" aria-label="August"></button>
+              th:class="${currentMonthValue == 8 } ? 'active' : ''" aria-label="August"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="8"
-              th:class="${monthValueNow == 9 } ? 'active' : ''" aria-label="September"></button>
+              th:class="${currentMonthValue == 9 } ? 'active' : ''" aria-label="September"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="9"
-              th:class="${monthValueNow == 10 } ? 'active' : ''" aria-label="October"></button>
+              th:class="${currentMonthValue == 10 } ? 'active' : ''" aria-label="October"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="10"
-              th:class="${monthValueNow == 11 } ? 'active' : ''" aria-label="November"></button>
+              th:class="${currentMonthValue == 11 } ? 'active' : ''" aria-label="November"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="11"
-              th:class="${monthValueNow == 12 } ? 'active' : ''" aria-label="December"></button>
+              th:class="${currentMonthValue == 12 } ? 'active' : ''" aria-label="December"></button>
           </div>
 
           <div class="carousel-inner">
 
             <!-- January  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 1 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 1 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -193,7 +193,7 @@
             </div>
 
             <!-- February  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 2 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 2 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -247,7 +247,7 @@
             </div>
 
             <!-- March  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 3 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 3 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -278,7 +278,7 @@
             </div>
 
             <!-- April  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 4 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 4 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -309,7 +309,7 @@
             </div>
 
             <!-- May  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 5 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 5 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -340,7 +340,7 @@
             </div>
 
             <!-- June  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 6 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 6 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -371,7 +371,7 @@
             </div>
 
             <!-- July  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 7 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 7 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -402,7 +402,7 @@
             </div>
 
             <!-- August  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 8 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 8 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -433,7 +433,7 @@
             </div>
 
             <!-- September  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 9 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 9 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -464,7 +464,7 @@
             </div>
 
             <!-- October  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 10 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 10 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -495,7 +495,7 @@
             </div>
 
             <!-- November  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 11 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 11 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -526,7 +526,7 @@
             </div>
 
             <!-- December  -->
-            <div class="carousel-item" th:classappend="${monthValueNow == 12 } ? 'active' : '' ">
+            <div class="carousel-item" th:classappend="${currentMonthValue == 12 } ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">

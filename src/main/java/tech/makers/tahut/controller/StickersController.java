@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import tech.makers.tahut.service.StickerService;
@@ -26,10 +27,13 @@ public class StickersController {
   StickerService stickerService;
 
   @GetMapping
-  public String showMyStickers(Authentication auth, Model model) {   
-  model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName())); 
-  model.addAttribute("monthValueNow", LocalDate.now().getMonthValue());   
-  model.addAttribute("dateToday", LocalDate.now());
+  public String showMyStickers(Authentication auth, Model model, @RequestParam(required=false) Integer month) {   
+    if (month == null) {
+      month = LocalDate.now().getMonthValue();
+    }
+    model.addAttribute("currentMonthValue", month); 
+    model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName()));  
+    model.addAttribute("dateToday", LocalDate.now());
     return "/stickers/index";
   }
 
@@ -67,7 +71,7 @@ public class StickersController {
         int eventDuration
     ) {
     stickerService.createNewSticker(auth.getName(), eventTitle, eventDate, eventStartTime, eventDuration);       
-    return new RedirectView("/stickers");            
+    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue() );            
   }
   
 }
