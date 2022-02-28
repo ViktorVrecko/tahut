@@ -95,10 +95,12 @@
       </div>
 
       <div class="mt-3">
-        <label class="form-label" for="eventDuration">Group:</label>
-        <select class="form-select" name="eventDuration" id="eventDuration" required>
-          <option value="" disabled selected hidden>Please choose...</option>
-          <option value="1"> Gruppe </option>
+        <label class="form-label" for="eventGroup">Group:</label>
+        <select class="form-select" name="eventGroup" id="eventGroup">
+          <option value="" selected>Choose group (optional)...</option>
+          <span th:each="group : ${myGroupMemberships}">
+            <option th:value="${group.getId}" th:text="${group.getGroupname}" ></option>
+          </span>
         </select>
       </div>
 

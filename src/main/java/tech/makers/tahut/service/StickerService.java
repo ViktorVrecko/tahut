@@ -18,13 +18,14 @@ public class StickerService {
   StickersRepository stickersRepository;
 
   public Sticker createNewSticker(String authorName, String eventTitle, LocalDate eventDate, LocalTime eventStartTime,
-      int eventDuration) {
+      int eventDuration, Long eventGroup) {
 
         Sticker newSticker = new Sticker();
         newSticker.setFkAuthor(authorName);
         newSticker.setContent(eventTitle);
         newSticker.setDuration(eventDuration);
         newSticker.setEventDate(LocalDateTime.of(eventDate, eventStartTime));
+        newSticker.setFkGroupId(eventGroup);
 
         return stickersRepository.save(newSticker);               
   }

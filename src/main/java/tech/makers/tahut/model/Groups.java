@@ -38,6 +38,10 @@ public class Groups {
     members.add(newUser);
   }
 
+  public Long getId() {
+    return this.id;
+  }
+
   public Set<User> getMembers() {
     return members;
   }
