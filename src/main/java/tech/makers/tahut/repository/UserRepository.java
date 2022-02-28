@@ -1,9 +1,8 @@
 package tech.makers.tahut.repository;
 
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import tech.makers.tahut.model.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
-  List<User> findByUsername(String username);
+  User findByUsername(String username);
 }
