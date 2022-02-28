@@ -33,18 +33,18 @@
   }
 
   .navbar-brand.brand {
-    color: #febe00
+    color: #b46d0a
   }
 </style>
 
 <body>
 
   <!-- navbar  -->
-  <div class="navbar sticky-top" style="background-color: #465d84; color: #f0f0f0 ;  ">
+  <div class="navbar sticky-top" style="background-color: #465d84; color: #f0f0f0; " > 
 
     <div class="container-fluid overflow-hidden">
       <div class="col-3 text-start">
-        <a class="navbar-brand brand" href="/"> Tahut </a>
+        <a class="navbar-brand brand" href="https://de.wikipedia.org/wiki/Thot"> Tahut </a>
 
         some text / code left aligned
       </div>
@@ -103,7 +103,8 @@
   <div class="container-fluid ">
     <!-- <div class="row "> -->
     <div class="row justify-content-center">
-      <div class="col-10 col_carousel text-center rounded">
+      <div class="col-10 col_carousel text-center rounded shadow-lg">
+       
 
         <!-- carousel start  -->
         <!--<div class="bd-example">-->
@@ -136,12 +137,12 @@
               th:class="${currentMonthValue == 12 } ? 'active' : ''" aria-label="December"></button>
           </div>
 
-          <div class="carousel-inner">
-
+          <div class="carousel-inner ">
+         
             <!-- January  -->
             <div class="carousel-item" th:classappend="${currentMonthValue == 1 } ? 'active' : '' ">
               <div class="container col-8">
-                <div class="card mt-2 mb-2">
+                <div class="card mt-2 mb-2 ">
                   <div class="card-header">
                     January
                   </div>
