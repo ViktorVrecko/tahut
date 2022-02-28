@@ -9,5 +9,7 @@ import tech.makers.tahut.model.Sticker;
 public interface StickersRepository extends JpaRepository<Sticker, Long> {
 
   List<Sticker> findByFkAuthorOrderByEventDate(String author);
+
+  Sticker findByIdAndFkAuthor(Long id, String author);
  
 }

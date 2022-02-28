@@ -20,7 +20,7 @@ public class GroupService {
   UserRepository userRepository;
 
   public Groups createNewGroup(String groupowner, String groupname) {
-    User searchuser = userRepository.findByUsername(groupowner).get(0);
+    User searchuser = userRepository.findByUsername(groupowner);
     Groups newGroup = new Groups();
     newGroup.setGroupname(groupname);
     newGroup.setGroupowner(searchuser.getId());
@@ -29,7 +29,7 @@ public class GroupService {
   }
 
   public List<Groups> getGroupsByGroupowner(String groupownername) {
-    User searchuser = userRepository.findByUsername(groupownername).get(0);
+    User searchuser = userRepository.findByUsername(groupownername);
     return groupsRepository.findGroupsByGroupowner(searchuser.getId());
   }
 }

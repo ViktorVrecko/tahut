@@ -31,36 +31,29 @@ public class StickerService {
 
   public Sticker updateSticker(String authorName, Long id, String eventTitle, LocalDate eventDate, LocalTime eventStartTime,
   int eventDuration ) {
-    Sticker toUpdate = stickersRepository.findById(id).get();
-
-    if ( !toUpdate.getFkAuthor().equals(authorName) ) {
+    Sticker stickerToUpdate = stickersRepository.findByIdAndFkAuthor(id, authorName);
+    
+    if (stickerToUpdate == null) 
       return null;
-    }
 
-    toUpdate.setContent(eventTitle);
-    toUpdate.setEventDate(LocalDateTime.of(eventDate, eventStartTime));
-    toUpdate.setDuration(eventDuration);
+    stickerToUpdate.setContent(eventTitle);
+    stickerToUpdate.setEventDate(LocalDateTime.of(eventDate, eventStartTime));
+    stickerToUpdate.setDuration(eventDuration);
 
-    return stickersRepository.save(toUpdate);
+    return stickersRepository.save(stickerToUpdate);
   }
 
   public void deleteSticker(String authorName, Long id) {
-    Sticker toDelete = stickersRepository.findById(id).get();
-
-    if ( !toDelete.getFkAuthor().equals(authorName) ) {
+    Sticker stickerToDelete = stickersRepository.findByIdAndFkAuthor(id, authorName);
+    
+    if (stickerToDelete == null) 
       return;
-    }
 
-    stickersRepository.deleteById(id);        
+    stickersRepository.deleteById(stickerToDelete.getId());        
   }
 
   public Sticker getStickerByAuthorAndId(String authorName, Long id) {
-    Sticker returnSticker = stickersRepository.findById(id).get();
-
-    if (!returnSticker.getFkAuthor().equals(authorName)) {
-      return null;
-    }
-
+    Sticker returnSticker = stickersRepository.findByIdAndFkAuthor(id, authorName);
     return returnSticker;
   }
 
