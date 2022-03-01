@@ -39,4 +39,12 @@ public class GroupService {
     User searchUser = userRepository.findByUsername(userName);
     return searchUser.getGroupMemberships();
   }
+
+  public boolean isUserInGroup(String userName, Long groupId) {
+    User user = userRepository.findByUsername(userName);
+    Groups group = groupsRepository.findById(groupId).get();
+
+    return group.getMembers().contains(user);                    
+  }
+
 }

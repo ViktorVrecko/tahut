@@ -17,6 +17,9 @@ public class StickerService {
   @Autowired
   StickersRepository stickersRepository;
 
+  @Autowired
+  GroupService groupService;
+
   public Sticker createNewSticker(String authorName, String eventTitle, LocalDate eventDate, LocalTime eventStartTime,
       int eventDuration, Long eventGroup) {
 
@@ -44,8 +47,8 @@ public class StickerService {
     return stickersRepository.save(stickerToUpdate);
   }
 
-  public void deleteSticker(String authorName, Long id) {
-    Sticker stickerToDelete = stickersRepository.findByIdAndFkAuthor(id, authorName);
+  public void deleteSticker(String requester, Long id) {
+    Sticker stickerToDelete = stickersRepository.findByIdAndFkAuthor(id, requester);
     
     if (stickerToDelete == null) 
       return;
@@ -60,6 +63,14 @@ public class StickerService {
 
   public List<Sticker> getStickersByAuthorOrderByDate(String author) {
     return stickersRepository.findByFkAuthorOrderByEventDate(author);
+  }
+
+  public List<Sticker> getStickersByGroupOrderByDate(String requester, Long groupId) {
+    boolean isRequesterInGroup = groupService.isUserInGroup(requester, groupId);
+
+    if (!isRequesterInGroup) return null;
+
+    return stickersRepository.findByFkGroupIdOrderByEventDate(groupId);
   }
  
 }

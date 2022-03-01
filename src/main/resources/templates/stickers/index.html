@@ -40,27 +40,45 @@
 <body>
 
   <!-- navbar  -->
-  <div class="navbar sticky-top" style="background-color: #465d84; color: #f0f0f0; " > 
-
-    <div class="container-fluid overflow-hidden">
-      <div class="col-3 text-start">
-        <a class="navbar-brand brand" href="https://de.wikipedia.org/wiki/Thot"> Tahut </a>
-
-        some text / code left aligned
-      </div>
-      <div class="col-6 text-center">
-        some text / code - centered
-      </div>
-      <div class="col-3 text-end">
-
-        <span class="navbar-text">
+  <nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: #465d84; color: #f0f0f0; ">
+    <div class="container-fluid">
+      <a class="navbar-brand brand" href="https://de.wikipedia.org/wiki/Thot"> Tahut </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <span class="navbar-text order-md-last">
           <div sec:authorize="isAuthenticated()">
-            Signed in as: <span sec:authentication="name"></span>
+            Hello <span sec:authentication="name"></span>
           </div>
-
+        </span>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/stickers">My Events</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Events by Group
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li th:each="group : ${myGroupMemberships}">
+                <a class="dropdown-item" th:href="@{/stickers(group=${group.getId})}" th:text="${group.getGroupname}"></a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/groups">Manage Groups</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+
+  </nav>
   <!-- end navbar  -->
 
   <!-- New Sticker Form -->
@@ -99,7 +117,7 @@
         <select class="form-select" name="eventGroup" id="eventGroup">
           <option value="" selected>Choose group (optional)...</option>
           <span th:each="group : ${myGroupMemberships}">
-            <option th:value="${group.getId}" th:text="${group.getGroupname}" ></option>
+            <option th:value="${group.getId}" th:text="${group.getGroupname}"></option>
           </span>
         </select>
       </div>
@@ -115,7 +133,7 @@
     <!-- <div class="row "> -->
     <div class="row justify-content-center">
       <div class="col-10 col_carousel text-center rounded shadow-lg">
-       
+
 
         <!-- carousel start  -->
         <!--<div class="bd-example">-->
@@ -149,7 +167,7 @@
           </div>
 
           <div class="carousel-inner ">
-         
+
             <!-- January  -->
             <div class="carousel-item" th:classappend="${currentMonthValue == 1 } ? 'active' : '' ">
               <div class="container col-8">
@@ -328,7 +346,7 @@
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
-                          
+
                         </tr>
                       </thead>
                       <tbody>
