@@ -79,9 +79,10 @@ public class StickersController {
       String eventTitle,
       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate eventDate,
       @DateTimeFormat(pattern = "HH:mm") LocalTime eventStartTime,
-      int eventDuration
+      int eventDuration,
+      Long eventGroup
     ) {
-    stickerService.updateSticker(auth.getName(), id, eventTitle, eventDate, eventStartTime, eventDuration);
+    stickerService.updateSticker(auth.getName(), id, eventTitle, eventDate, eventStartTime, eventDuration, eventGroup);
     return new RedirectView("/stickers/edit/" + id ); 
   }
 
