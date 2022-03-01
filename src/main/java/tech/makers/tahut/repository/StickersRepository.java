@@ -10,6 +10,8 @@ public interface StickersRepository extends JpaRepository<Sticker, Long> {
 
   List<Sticker> findByFkAuthorOrderByEventDate(String author);
 
+  List<Sticker> findByFkGroupIdOrderByEventDate(Long groupId);
+
   Sticker findByIdAndFkAuthor(Long id, String author);
  
 }
