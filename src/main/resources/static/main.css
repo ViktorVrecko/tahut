@@ -47,7 +47,7 @@
       --margin-bottom: 00px;
       }
   
-    [class*="con1"] {
+    [class*="space"] {
     padding: 3rem;
     --background-color: #587a9db5;
     --border: 2px solid #040404;
