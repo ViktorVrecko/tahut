@@ -63,59 +63,91 @@
   </div>
   <!-- end navbar  -->
 
-  <!-- New Sticker Form -->
-  <div class="container col-2 card card-body">
-    <form action="#" th:action="@{/stickers}" method="POST">
-      <div class="mt-3">
-        <label class="form-label" for="eventTitle">Title:</label>
-        <input class="form-control" type="text" id="eventTitle" name="eventTitle" required>
-      </div>
-      <div class="mt-3">
-        <label class="form-label" for="eventDate">Date:</label>
-        <input class="form-control" type="date" id="eventDate" name="eventDate" th:min="${dateToday}" max="2022-12-31"
-          required>
-      </div>
-      <div class="mt-3">
-        <label class="form-label" for="eventStartTime">Start Time:</label>
-        <input class="form-control" type="time" id="eventStartTime" name="eventStartTime" required>
-      </div>
-      <div class="mt-3">
-        <label class="form-label" for="eventDuration">Duration:</label>
-        <select class="form-select" name="eventDuration" id="eventDuration" required>
-          <option value="" disabled selected hidden>Please choose...</option>
-          <option value="1">1h</option>
-          <option value="2">2h</option>
-          <option value="3">3h</option>
-          <option value="4">4h</option>
-          <option value="6">6h</option>
-          <option value="8">8h</option>
-          <option value="12">12h</option>
-          <option value="16">16h</option>
-        </select>
-      </div>
+    
+  <div class="container con1"></div>
 
-      <div class="mt-3">
-        <label class="form-label" for="eventGroup">Group:</label>
-        <select class="form-select" name="eventGroup" id="eventGroup">
-          <option value="" selected>Choose group (optional)...</option>
-          <span th:each="group : ${myGroupMemberships}">
-            <option th:value="${group.getId}" th:text="${group.getGroupname}" ></option>
-          </span>
-        </select>
-      </div>
 
-      <div class="mt-3">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
+  
 
   <!-- carousel placing  -->
-  <div class="container-fluid ">
-    <!-- <div class="row "> -->
+  <div class="container-fluid">
+    
     <div class="row justify-content-center">
-      <div class="col-10 col_carousel text-center rounded shadow-lg">
        
+
+      <div class="col-10 col_carousel text-center rounded shadow-lg">
+        
+        <!-- Canvas Start -->
+        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          Add item
+        </a>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">new Item</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div> <!-- Canvas Body Start -->
+              
+              <div class="container-fluid">
+              <div class="row justify-content-center">
+             
+              
+              <div class="container col-2 card card-body">
+                <form action="#" th:action="@{/stickers}" method="POST">
+                  <div class="mt-3">
+                    <label class="form-label" for="eventTitle">Title:</label>
+                    <input class="form-control" type="text" id="eventTitle" name="eventTitle" required>
+                  </div>
+                  <div class="mt-3">
+                    <label class="form-label" for="eventDate">Date:</label>
+                    <input class="form-control" type="date" id="eventDate" name="eventDate" th:min="${dateToday}" max="2022-12-31"
+                      required>
+                  </div>
+                  <div class="mt-3">
+                    <label class="form-label" for="eventStartTime">Start Time:</label>
+                    <input class="form-control" type="time" id="eventStartTime" name="eventStartTime" required>
+                  </div>
+                  <div class="mt-3">
+                    <label class="form-label" for="eventDuration">Duration:</label>
+                    <select class="form-select" name="eventDuration" id="eventDuration" required>
+                      <option value="" disabled selected hidden>Please choose...</option>
+                      <option value="1">1h</option>
+                      <option value="2">2h</option>
+                      <option value="3">3h</option>
+                      <option value="4">4h</option>
+                      <option value="6">6h</option>
+                      <option value="8">8h</option>
+                      <option value="12">12h</option>
+                      <option value="16">16h</option>
+                    </select>
+                  </div>
+            
+                  <div class="mt-3">
+                    <label class="form-label" for="eventGroup">Group:</label>
+                    <select class="form-select" name="eventGroup" id="eventGroup">
+                      <option value="" selected>Choose group (optional)...</option>
+                      <span th:each="group : ${myGroupMemberships}">
+                        <option th:value="${group.getId}" th:text="${group.getGroupname}" ></option>
+                      </span>
+                    </select>
+                  </div>
+            
+                  <div class="mt-3">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            
+              
+            
+            </div>
+            </div>
+
+            </div> <!-- Canvas Body end -->
+          </div>
+        </div>
+        <!-- Canvas end -->
 
         <!-- carousel start  -->
         <!--<div class="bd-example">-->

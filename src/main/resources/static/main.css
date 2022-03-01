@@ -18,7 +18,7 @@
   --padding: 3rem;
   background-color: #7a7f95;
   --background-color: #ffffff;
-  --border: 2px solid #ca0d0d;
+  --border: 2px solid #ffffff;
   --color: #c21c1c;
   text-align: center;
   }
@@ -48,9 +48,9 @@
       }
   
     [class*="con1"] {
-    padding: 0rem;
+    padding: 3rem;
     --background-color: #587a9db5;
-    border: 2px solid #040404;
+    --border: 2px solid #040404;
     --color: #c21c1c;
     --text-align: center;
     
