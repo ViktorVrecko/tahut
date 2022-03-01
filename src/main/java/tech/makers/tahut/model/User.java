@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import static java.lang.Boolean.TRUE;
 
 import java.util.HashSet;
@@ -26,6 +27,10 @@ public class User {
  
     public User() {
         this.enabled = TRUE;
+    }
+
+    public User(String username) {
+        this.username = username;
     }
 
     public User(String username, String password) {

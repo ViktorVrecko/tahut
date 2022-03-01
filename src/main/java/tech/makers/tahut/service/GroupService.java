@@ -25,7 +25,7 @@ public class GroupService {
     Groups newGroup = new Groups();
     newGroup.setGroupname(groupname);
     newGroup.setGroupowner(searchuser.getId());
-    newGroup.addUserToGroup(searchuser);    
+    newGroup.registerUser(searchuser);    
 
     return groupsRepository.save(newGroup);
   }
@@ -40,15 +40,23 @@ public class GroupService {
     return searchUser.getGroupMemberships();
   }
 
-  public Set<Groups> getAllUsers(String userName) {
-    User searchUser = userRepository.findByUsername(userName);
-    return searchUser.getGroupMemberships();
+  public Iterable<User> getAllUsers() {
+    return userRepository.findAll();
   }
+
   public boolean isUserInGroup(String userName, Long groupId) {
     User user = userRepository.findByUsername(userName);
     Groups group = groupsRepository.findById(groupId).get();
 
     return group.getMembers().contains(user);                    
+  }
+
+  public void addUserToGroup(Long userId, Long groupId) {
+    Groups groupToUpdate = groupsRepository.findById(groupId).get();
+    User userToAdd = userRepository.findById(userId).get();
+
+    groupToUpdate.registerUser(userToAdd);
+    groupsRepository.save(groupToUpdate);
   }
 
 }

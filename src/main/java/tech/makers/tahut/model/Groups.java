@@ -34,7 +34,7 @@ public class Groups {
   public Long getGroupowner() { return groupowner; }
   public void setGroupowner(Long groupowner) { this.groupowner = groupowner; }
 
-  public void addUserToGroup(User newUser) {
+  public void registerUser(User newUser) {
     members.add(newUser);
   }
 
