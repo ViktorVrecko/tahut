@@ -2,6 +2,7 @@ package tech.makers.tahut.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import tech.makers.tahut.model.Sticker;
 import tech.makers.tahut.service.GroupService;
 import tech.makers.tahut.service.StickerService;
 
@@ -31,13 +33,27 @@ public class StickersController {
   GroupService groupService;
     
   @GetMapping
-  public String showMyStickers(Authentication auth, Model model, @RequestParam(required=false) Integer month) {   
-    if (month == null) {
+  public String showMyStickers(
+      Authentication auth, 
+      Model model, 
+      @RequestParam(required=false) Integer month,
+      @RequestParam(required=false) Long group
+    ) {   
+
+    if (month == null || month < 1 || month > 12) {
       month = LocalDate.now().getMonthValue();
     }
+
+    List<Sticker> stickers;
+    if (group == null) {
+      stickers = stickerService.getStickersByAuthorOrderByDate(auth.getName());
+    } else {
+      stickers = stickerService.getStickersByGroupOrderByDate(auth.getName(), group);
+    }  
+
     model.addAttribute("currentMonthValue", month); 
-    model.addAttribute("myStickers", stickerService.getStickersByAuthorOrderByDate(auth.getName()));  
     model.addAttribute("dateToday", LocalDate.now());
+    model.addAttribute("myStickers", stickers);  
     model.addAttribute("myGroupMemberships", groupService.getMembershipsByUsername(auth.getName()) );
     return "/stickers/index";
   }
@@ -64,20 +80,20 @@ public class StickersController {
       int eventDuration
     ) {
     stickerService.updateSticker(auth.getName(), id, eventTitle, eventDate, eventStartTime, eventDuration);
-    return new RedirectView("/stickers"); 
+    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue() ); 
   }
 
   @PostMapping
   public RedirectView createNewSticker(
-        Authentication auth, 
-        String eventTitle,
-        @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate eventDate,
-        @DateTimeFormat(pattern = "HH:mm") LocalTime eventStartTime,
-        int eventDuration,
-        Long eventGroup
+      Authentication auth, 
+      String eventTitle,
+      @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate eventDate,
+      @DateTimeFormat(pattern = "HH:mm") LocalTime eventStartTime,
+      int eventDuration,
+      Long eventGroup
     ) {
     stickerService.createNewSticker(auth.getName(), eventTitle, eventDate, eventStartTime, eventDuration, eventGroup);       
-    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue() );            
+    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue());            
   }
   
 }
