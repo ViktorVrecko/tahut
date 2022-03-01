@@ -93,7 +93,7 @@ public class StickersController {
       Long eventGroup
     ) {
     stickerService.createNewSticker(auth.getName(), eventTitle, eventDate, eventStartTime, eventDuration, eventGroup);       
-    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue() + "&group=" + eventGroup);            
+    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue());            
   }
   
 }
