@@ -18,7 +18,8 @@ public class GroupsController {
 
   @GetMapping("/groups")
   public String groups(Authentication auth, Model model) {   
-    model.addAttribute("groups", groupService.getGroupsByGroupowner(auth.getName()));    
+    model.addAttribute("groups", groupService.getGroupsByGroupowner(auth.getName()));
+    model.addAttribute("member", groupService.getMembershipsByUsername(auth.getName()));  
     return "/groups/groups";
   }
 
@@ -29,5 +30,13 @@ public class GroupsController {
   ) {
     groupService.createNewGroup(auth.getName(), groupname);
     return new  RedirectView("/groups");
+  }
+
+  @PostMapping("/addMember")
+  public RedirectView addNewMemberToGroup(
+    Authentication auth
+  ) {
+    groupService.getAllUsers(auth.getName());
+    return new RedirectView("/groups");
   }
 }

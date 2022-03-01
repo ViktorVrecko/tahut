@@ -39,4 +39,9 @@ public class GroupService {
     User searchUser = userRepository.findByUsername(userName);
     return searchUser.getGroupMemberships();
   }
+
+  public Set<Groups> getAllUsers(String userName) {
+    User searchUser = userRepository.findByUsername(userName);
+    return searchUser.getGroupMemberships();
+  }
 }
