@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -43,4 +45,11 @@ public class GroupsController {
     groupService.addUserToGroup(userId, groupId);
     return new RedirectView("/groups");
   }
+  
+  @DeleteMapping("{id}")
+  public RedirectView deleteSticker(Authentication auth, @PathVariable("id") Long id) {
+    groupService.deleteMembership(auth.getName(), id);
+    return new RedirectView("/groups"); 
+  }
+
 }

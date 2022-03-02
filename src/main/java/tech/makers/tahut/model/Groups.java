@@ -38,6 +38,12 @@ public class Groups {
     members.add(newUser);
   }
 
+  public void removeUser(User removeUser) {
+  
+    members.remove(removeUser);
+
+  }
+
   public Long getId() {
     return this.id;
   }
