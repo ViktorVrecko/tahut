@@ -201,7 +201,8 @@
           <div class="carousel-inner">
 
             <!-- Event Tables  -->
-            <div th:each="month : ${monthEnumArray}" class="carousel-item" th:classappend="${currentMonthValue} == ${month.getValue} ? 'active' : '' ">
+            <div th:each="month : ${monthEnumArray}" class="carousel-item"
+              th:classappend="${currentMonthValue} == ${month.getValue} ? 'active' : '' ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
@@ -220,7 +221,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue} == ${month.getValue}">
+                        <tr th:each="sticker : ${myStickers}"
+                          th:if="${sticker.getEventDate.getMonthValue} == ${month.getValue}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
                           <td th:text="${sticker.getFkAuthor}"></td>
@@ -267,7 +269,6 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-
 
           <!-- carousel end  -->
 
