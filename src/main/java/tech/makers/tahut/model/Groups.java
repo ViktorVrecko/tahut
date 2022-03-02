@@ -39,9 +39,7 @@ public class Groups {
   }
 
   public void removeUser(User removeUser) {
-  
     members.remove(removeUser);
-
   }
 
   public Long getId() {

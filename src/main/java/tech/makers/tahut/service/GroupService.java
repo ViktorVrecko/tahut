@@ -62,12 +62,8 @@ public class GroupService {
   public void deleteMembership(String userName, Long groupId) {
     User userToRemove = userRepository.findByUsername(userName);
     Groups groupToUpdate = groupsRepository.findById(groupId).get();
-
-    //Sticker stickerToDelete = stickersRepository.findByIdAndFkAuthor(id, requester);
+    
     groupToUpdate.removeUser(userToRemove);
-    //if (stickerToDelete == null) 
-     // return;
     groupsRepository.save(groupToUpdate); 
-    //stickersRepository.deleteById(stickerToDelete.getId());        
   }
 }
