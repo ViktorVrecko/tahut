@@ -34,7 +34,7 @@ public class StickerService {
   }
 
   public Sticker updateSticker(String authorName, Long id, String eventTitle, LocalDate eventDate, LocalTime eventStartTime,
-  int eventDuration ) {
+  int eventDuration, Long eventGroup ) {
     Sticker stickerToUpdate = stickersRepository.findByIdAndFkAuthor(id, authorName);
     
     if (stickerToUpdate == null) 
@@ -43,6 +43,7 @@ public class StickerService {
     stickerToUpdate.setContent(eventTitle);
     stickerToUpdate.setEventDate(LocalDateTime.of(eventDate, eventStartTime));
     stickerToUpdate.setDuration(eventDuration);
+    stickerToUpdate.setFkGroupId(eventGroup);
 
     return stickersRepository.save(stickerToUpdate);
   }

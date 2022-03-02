@@ -61,6 +61,8 @@ public class StickersController {
   @GetMapping("edit/{id}") 
   public String showUpdateForm(Authentication auth, Model model, @PathVariable("id") Long id) {
     model.addAttribute("stickerToEdit", stickerService.getStickerByAuthorAndId(auth.getName(), id));
+    model.addAttribute("dateToday", LocalDate.now());
+    model.addAttribute("myGroupMemberships", groupService.getMembershipsByUsername(auth.getName()) );
     return "/stickers/edit";
   }
 
@@ -77,10 +79,11 @@ public class StickersController {
       String eventTitle,
       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate eventDate,
       @DateTimeFormat(pattern = "HH:mm") LocalTime eventStartTime,
-      int eventDuration
+      int eventDuration,
+      Long eventGroup
     ) {
-    stickerService.updateSticker(auth.getName(), id, eventTitle, eventDate, eventStartTime, eventDuration);
-    return new RedirectView("/stickers" + "?month=" + eventDate.getMonthValue() ); 
+    stickerService.updateSticker(auth.getName(), id, eventTitle, eventDate, eventStartTime, eventDuration, eventGroup);
+    return new RedirectView("/stickers/edit/" + id ); 
   }
 
   @PostMapping

@@ -78,7 +78,7 @@ public class StickerServiceTest {
 
     Sticker newSticker = stickerService.createNewSticker("admin", "Meeting with Freddy", date, time, 2, null);   
     
-    Sticker updatedSticker = stickerService.updateSticker("admin", newSticker.getId(), "Meeting with Alex", date, time, 4);
+    Sticker updatedSticker = stickerService.updateSticker("admin", newSticker.getId(), "Meeting with Alex", date, time, 4, null);
     
     assertEquals(updatedSticker.getContent(), "Meeting with Alex");
     assertEquals(updatedSticker.getDuration(), 4);
