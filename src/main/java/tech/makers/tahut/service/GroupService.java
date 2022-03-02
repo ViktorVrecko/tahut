@@ -58,5 +58,12 @@ public class GroupService {
     groupToUpdate.registerUser(userToAdd);
     groupsRepository.save(groupToUpdate);
   }
-
+  
+  public void deleteMembership(String userName, Long groupId) {
+    User userToRemove = userRepository.findByUsername(userName);
+    Groups groupToUpdate = groupsRepository.findById(groupId).get();
+    
+    groupToUpdate.removeUser(userToRemove);
+    groupsRepository.save(groupToUpdate); 
+  }
 }
