@@ -2,6 +2,7 @@ package tech.makers.tahut.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,8 @@ public class StickersController {
       Authentication auth, 
       Model model, 
       @RequestParam(required=false) Integer month,
-      @RequestParam(required=false) Long group
+      @RequestParam(required=false) Long group,
+      @RequestParam(required=false) String view
     ) {   
 
     if (month == null || month < 1 || month > 12) {
@@ -50,10 +52,17 @@ public class StickersController {
     } else {
       stickers = stickerService.getStickersByGroupOrderByDate(auth.getName(), group);
     }  
+    
+    if (view == null || !view.equals("table")) {
+      view = "sticker";
+    }
 
     model.addAttribute("currentMonthValue", month); 
     model.addAttribute("dateToday", LocalDate.now());
+    model.addAttribute("monthEnumArray", Month.values());
     model.addAttribute("myStickers", stickers);  
+    model.addAttribute("view", view);
+    model.addAttribute("currentGroupId", group);
     model.addAttribute("myGroupMemberships", groupService.getMembershipsByUsername(auth.getName()) );
     return "/stickers/index";
   }
