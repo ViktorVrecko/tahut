@@ -172,7 +172,7 @@
         <div id="months" class="carousel slide pb-5" data-bs-interval="false">
 
           <div class="carousel-indicators">
-            <button type="submit" data-bs-target="#months" data-bs-slide-to="0"
+            <button type="button" data-bs-target="#months" data-bs-slide-to="0"
               th:class="${currentMonthValue == 1 } ? 'active' : ''" aria-label="January"></button>
             <button type="button" data-bs-target="#months" data-bs-slide-to="1"
               th:class="${currentMonthValue == 2 } ? 'active' : ''" aria-label="February"></button>
@@ -227,7 +227,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -283,7 +284,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -339,7 +341,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -395,7 +398,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -451,7 +455,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -507,7 +512,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -563,7 +569,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -619,7 +626,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -675,7 +683,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -731,7 +740,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -787,7 +797,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -843,7 +854,8 @@
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
+                            <div class="btn-group btn-group-sm" role="group"
+                              th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
