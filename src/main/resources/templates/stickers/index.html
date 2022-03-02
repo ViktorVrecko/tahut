@@ -294,9 +294,14 @@
                               </form>
                             </div>
                           </div>
+                        </div>
                       </div>
                     </div>
+                  </div>
 
+                  <div class="card-footer">
+                    <a th:href="@{stickers(view='table', month=${month.getValue}, group=${currentGroupId})}" class="card-link">Table</a>
+                    <a th:href="@{stickers(view='sticker', month=${month.getValue}, group=${currentGroupId})}" class="card-link">Sticker</a>
                   </div>
                 </div>
               </div>
