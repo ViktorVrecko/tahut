@@ -128,19 +128,22 @@
                                 <li class="list-group-item" th:each="group : ${groups}">
                                     <span th:text="${group.groupname}"></span>
                                     <ul class="list-group list-group">
-                                        <li class="list-group-item" th:each="member : ${group.getMembers}" th:text="${member.getUsername}"></li>
-                                        <li class="list-group-item">
+                                        <li class="list-group-item" th:each="member : ${group.getMembers}"
+                                            th:text="${member.getUsername}"></li>
+                                        <li class="list-group-item" >
                                             <form action="#" th:action="@{/addMember}" th:method="patch">
-                                                <div class="input-group input-group-sm">
+                                                <div class="input-group input-group-sm" >
                                                     <select class="form-select" name="userId" id="userId">
                                                         <option selected disabled>Select user...</option>
                                                         <span th:each="addMember : ${users}">
-                                                            <option th:value="${addMember.getId}" th:text="${addMember.username}"></option>
+                                                            <option th:unless="${group.getMembers.contains(addMember)}" th:value="${addMember.getId}"
+                                                                th:text="${addMember.username}"
+                                                            ></option>
                                                         </span>
                                                     </select>
-                                                    <input type="hidden" th:value="${group.getId}" name="groupId" id="groupId" />
-                                                    <button class="btn btn-outline-primary"
-                                                        type="submit">Add</button>
+                                                    <input type="hidden" th:value="${group.getId}" name="groupId"
+                                                        id="groupId" />
+                                                    <button class="btn btn-outline-primary" type="submit">Add</button>
                                                 </div>
                                             </form>
                                         </li>
@@ -187,7 +190,6 @@
             </div>
         </div>
     </div>
-
 
       <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
