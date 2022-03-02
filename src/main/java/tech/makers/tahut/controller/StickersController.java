@@ -2,6 +2,7 @@ package tech.makers.tahut.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,7 @@ public class StickersController {
 
     model.addAttribute("currentMonthValue", month); 
     model.addAttribute("dateToday", LocalDate.now());
+    model.addAttribute("monthEnumArray", Month.values());
     model.addAttribute("myStickers", stickers);  
     model.addAttribute("myGroupMemberships", groupService.getMembershipsByUsername(auth.getName()) );
     return "/stickers/index";
