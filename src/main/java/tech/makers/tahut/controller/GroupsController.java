@@ -20,7 +20,7 @@ public class GroupsController {
   @GetMapping("/groups")
   public String groups(Authentication auth, Model model) {   
     model.addAttribute("groups", groupService.getGroupsByGroupowner(auth.getName()));
-    model.addAttribute("memberships", groupService.getMembershipsByUsername(auth.getName()));
+    model.addAttribute("myGroupMemberships", groupService.getMembershipsByUsername(auth.getName()));
     model.addAttribute("users", groupService.getAllUsers());
     return "/groups/groups";
   }

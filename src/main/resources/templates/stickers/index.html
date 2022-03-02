@@ -213,6 +213,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -222,10 +223,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 1}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -267,6 +269,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -276,10 +279,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 2}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -321,6 +325,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -330,10 +335,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 3}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -375,20 +381,21 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
-
                         </tr>
                       </thead>
                       <tbody>
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 4}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -430,6 +437,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -439,10 +447,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 5}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -484,6 +493,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -493,10 +503,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 6}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -538,6 +549,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -547,10 +559,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 7}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -592,6 +605,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -601,10 +615,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 8}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -646,6 +661,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -655,10 +671,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 9}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -700,6 +717,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -709,10 +727,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 10}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -754,6 +773,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -763,10 +783,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 11}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -808,6 +829,7 @@
                         <tr>
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
+                          <th scope="col">Author</th>
                           <th scope="col">Time</th>
                           <th scope="col">Duration</th>
                           <th scope="col">Edit/Delete</th>
@@ -817,10 +839,11 @@
                         <tr th:each="sticker : ${myStickers}" th:if="${sticker.getEventDate.getMonthValue == 12}">
                           <td th:text="${sticker.getEventDate.toLocalDate}"></td>
                           <td th:text="${sticker.getContent}"></td>
+                          <td th:text="${sticker.getFkAuthor}"></td>
                           <td th:text="${sticker.getEventDate.toLocalTime}"></td>
                           <td th:text="${sticker.getDuration}"></td>
                           <td>
-                            <div class="btn-group btn-group-sm" role="group">
+                            <div class="btn-group btn-group-sm" role="group" th:if="${sticker.getFkAuthor} == ${#authentication.getName} ">
                               <form action="#" th:action="@{'/stickers/edit/' + ${sticker.id}}" method="get">
                                 <button type="submit" class="btn btn-sm btn-outline-warning text-warning">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
