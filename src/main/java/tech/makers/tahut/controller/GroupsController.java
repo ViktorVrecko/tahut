@@ -47,7 +47,7 @@ public class GroupsController {
   }
   
   @DeleteMapping("{id}")
-  public RedirectView deleteSticker(Authentication auth, @PathVariable("id") Long id) {
+  public RedirectView deleteMembership(Authentication auth, @PathVariable("id") Long id) {
     groupService.deleteMembership(auth.getName(), id);
     return new RedirectView("/groups"); 
   }
