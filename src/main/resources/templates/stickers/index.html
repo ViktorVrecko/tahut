@@ -35,6 +35,61 @@
   .navbar-brand.brand {
     color: #b46d0a
   }
+
+  .JANUARY {
+    background-image: url('https://cdn.pixabay.com/photo/2017/03/02/16/54/iceland-2111811_1280.jpg');
+  }
+
+  .FEBRUARY {
+    background-image: url('https://cdn.pixabay.com/photo/2020/02/08/14/36/trees-4830285_1280.jpg');   
+  }
+
+  .MARCH {
+    background-image: url('https://cdn.pixabay.com/photo/2019/03/03/18/40/violet-4032577_1280.jpg');   
+  }
+
+  .APRIL {
+    background-image: url('https://cdn.pixabay.com/photo/2018/03/11/14/09/eggs-3216879_1280.jpg');
+  }
+
+  .MAY {
+    background-image: url('https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg');
+  }
+
+  .JUNE {
+    background-image: url('https://cdn.pixabay.com/photo/2017/11/04/08/14/tree-2916763_1280.jpg');
+  }
+
+  .JULY {
+    background-image: url('https://cdn.pixabay.com/photo/2017/06/17/18/35/background-2413081_1280.jpg');
+  }
+
+  .AUGUST {
+    background-image: url('https://cdn.pixabay.com/photo/2017/10/10/07/48/beach-2836300_1280.jpg');
+  }
+
+  .SEPTEMBER {
+    background-image: url('https://cdn.pixabay.com/photo/2018/04/16/16/16/sunset-3325080_1280.jpg');
+  }
+
+  .OCTOBER {
+    background-image: url('https://cdn.pixabay.com/photo/2018/03/02/14/43/autumn-3193305_1280.jpg');
+  }
+
+  .NOVEMBER {
+    background-image: url('https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_1280.jpg');
+  }
+
+  .DECEMBER {
+    background-image: url('https://cdn.pixabay.com/photo/2016/12/27/21/03/lone-tree-1934897_1280.jpg');
+  }
+
+  .JANUARY, .FEBRUARY, .MARCH, .APRIL, .MAY, .JUNE, .JULY, .AUGUST, .SEPTEMBER, .OCTOBER, .NOVEMBER, .DECEMBER {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;  
+  }
+
 </style>
 
 <body>
@@ -198,7 +253,7 @@
           <div class="carousel-inner">
 
             <div th:each="month : ${monthEnumArray}" class="carousel-item"
-              th:classappend="${currentMonthValue} == ${month.getValue} ? 'active' : '' ">
+              th:classappend="${currentMonthValue} == ${month.getValue} ? 'active ' + ${month} : ${month} ">
               <div class="container col-8">
                 <div class="card mt-2 mb-2">
                   <div class="card-header">
