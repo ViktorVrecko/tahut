@@ -88,16 +88,22 @@
             <form action="#" th:action="@{'/stickers/' + ${stickerToEdit.id}}" th:method="PATCH">
                 <legend>Edit Event</legend>
                 <div class="mt-3">
-                    <label class="form-label" for="eventTitle">Title:</label>
+                    <label class="form-label" for="eventTitle">Title:
+                        <span th:text="${stickerToEdit.getContent}"></span>
+                    </label>
                     <input class="form-control" type="text" id="eventTitle" th:value="${stickerToEdit.content}" name="eventTitle" required>
                 </div>
                 <div class="mt-3">
-                    <label class="form-label" for="eventDate">Date:</label>
+                    <label class="form-label" for="eventDate">Date:
+                        <span th:text="${stickerToEdit.getEventDate.toLocalDate}"></span>
+                    </label>
                     <input class="form-control" type="date" id="eventDate" th:value="${stickerToEdit.eventDate.toLocalDate}" name="eventDate" th:min="${dateToday}"
                         max="2022-12-31" required>
                 </div>
                 <div class="mt-3">
-                    <label class="form-label" for="eventStartTime">Start Time:</label>
+                    <label class="form-label" for="eventStartTime">Start Time:
+                        <span th:text="${stickerToEdit.getEventDate.toLocalTime}"></span>
+                    </label>
                     <input class="form-control" type="time" id="eventStartTime" th:value="${stickerToEdit.eventDate.toLocalTime}" name="eventStartTime" required>
                 </div>
                 <div class="mt-3">
@@ -122,7 +128,8 @@
                         <span th:text="${stickerToEdit.getFkGroupId}"></span>
                     </label>
                     <select class="form-select" name="eventGroup" id="eventGroup">
-                        <option value="" selected>Choose group (optional)...</option>
+                        <option th:value="${stickerToEdit.getFkGroupId}" selected>No change...</option>
+                        <option value="">No group...</option>
                         <span th:each="group : ${myGroupMemberships}">
                             <option th:value="${group.getId}" th:text="${group.getId} + ' - ' + ${group.getGroupname}"></option>
                         </span>
